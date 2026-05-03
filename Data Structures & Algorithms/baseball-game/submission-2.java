@@ -1,0 +1,32 @@
+class Solution {
+    public int calPoints(String[] operations) {
+        int[] arr=new int[operations.length];
+        int i=0;
+        for(String s:operations)
+        {
+            if(s.equals("C"))
+            i--;
+            else if(s.equals("D"))
+            {
+                arr[i]=2*arr[i-1];
+                i++;
+            }
+            else if(s.equals("+"))
+            {
+                arr[i]=arr[i-1]+arr[i-2];
+                i++;
+            }
+            else
+            {
+                arr[i]=Integer.parseInt(s);
+                i++;
+            }
+        }
+        int tot=0;
+        for(int j=0;j<i;j++)
+        {
+            tot+=arr[j];
+        }
+        return tot;
+    }
+}
